@@ -17,7 +17,7 @@ int main(int argc, char **argv)
         printf("USAGE: monty file");
         error_fun(&headstack);
     }
-    openfile(argv[1], &headstack);
+    openfile(argv[1], &stack);
     free_list(headstack);
     return (0);
 }
