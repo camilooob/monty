@@ -6,8 +6,20 @@ int sq_flag = 0;
  * @argv: code files char
  * Return: None
  */
-int main(int argc, char argv)
+int main(int argc, char **argv)
 {
+    stack_t *headstack;
 
+    headstack = NULL;
+
+    if (argc != 2)
+    {
+        printf("USAGE: monty file");
+        error_fun(&headstack);
+    }
+    openfile(argv[1], &headstack);
+    free_list(headstack);
+    return (0);
 }
+
 
