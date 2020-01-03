@@ -10,6 +10,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <limits.h>
+
+extern int sq_flag;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
