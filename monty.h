@@ -40,8 +40,27 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/**
+ * struct command_s - command struct
+ * @op: name of operation
+ * @arg: argument function
+ * @mode: stack or queue
+ * @line_number: number of line being
+ * @head: head of linked list
+ * @tail: tail of linked list
+ */
+typedef struct command_s
+{
+	char *op;
+	int arg;
+	int *mode;
+	unsigned int line_number;
+	stack_t **head;
+	stack_t **tail;
+} command_t;
 int main(int argc, char **argv);
 void error_fun(stack_t **headstack);
 void free_list(stack_t *head);
+void get_func(command_t *command);
 void openfile(char *file, stack_t **headstack);
 #endif

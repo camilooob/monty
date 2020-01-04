@@ -48,7 +48,7 @@ void openfile(char *namefile, stack_t **headstack)
             i++;
         }
         int init_size = strlen(str);
-	    char delim[] = "\n" " ";
+	    char delim[] = " \t\r\n";
         char *ptr = strtok(str, delim);
 
 	    while(ptr != NULL)
@@ -61,14 +61,39 @@ void openfile(char *namefile, stack_t **headstack)
 	    
 	
 }
-
-
-/**
-void allowed_opcodes(char *namefile, stack_t **headstack)
+void get_func(command_t *command)
 {
-	char allowedopcodes[7] = ["push", "pall", "pint", "pop", "swap", "add", "nop"]
+	int i;
+
+	instruction_t instruct[] = {
+		{"push", _push},
+		{"pall", _pall},
+		{"pint", _pint},
+		{"pop", _pop},
+		{"swap", _swap},
+		{"pchar", _pchar},
+		{"add", _add},
+		{"sub", _sub},
+		{"mul", _mul},
+		{"div", _div},
+		{"mod", _mod},
+		{"nop", _nop},
+		{"rotl", _rotl},
+		{"rotr", _rotr},
+		{"pstr", _pstr},
+		{"stack", _stack},
+		{"queue", _queue},
+		{NULL, NULL},
+	};
+
+	i = 0;
+	while (instruct[i].f != NULL && strcmp(instruct[i].opcode, str) != 0)
+	{
+		i++;
+	}
+
+	return (instruct[i].f);
 }
-*/
 //stack_t *add_node( **head, const int n)
 //{
 //}
