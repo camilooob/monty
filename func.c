@@ -29,8 +29,46 @@ void free_list(stack_t *head)
 
 void openfile(char *namefile, stack_t **headstack)
 {
+	FILE *file = fopen(namefile, "r");
 
 
-stack_t *add_node( **head, const int n)
-{
+	if (file == 0)
+	{
+		printf("Can't open file %s\n", namefile );
+		error_fun(headstack);
+	}
+	else
+	{
+		int letter;
+		char words[1024];
+		char count
+		int i;
+		while ((letter = fgetc(file)) != EOF)
+		{
+	//		while (letter != 32)
+	//		{
+				for (i = 0; letter != 104; i++)
+				{
+  					words[i]=letter;
+
+//  			words[i]= '\0';
+//			printf("%s", words);
+				}
+//			}
+			words[i] = '\0';
+			printf("%s", words);
+			fclose(file);
+		}
+	}
 }
+
+
+/**
+void allowed_opcodes(char *namefile, stack_t **headstack)
+{
+	char allowedopcodes[7] = ["push", "pall", "pint", "pop", "swap", "add", "nop"]
+}
+*/
+//stack_t *add_node( **head, const int n)
+//{
+//}
