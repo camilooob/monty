@@ -63,37 +63,108 @@ void openfile(char *namefile, stack_t **headstack)
 }
 void get_func(command_t *command)
 {
-	int i;
-
-	instruction_t instruct[] = {
-		{"push", _push},
-		{"pall", _pall},
-		{"pint", _pint},
-		{"pop", _pop},
-		{"swap", _swap},
-		{"pchar", _pchar},
-		{"add", _add},
-		{"sub", _sub},
-		{"mul", _mul},
-		{"div", _div},
-		{"mod", _mod},
-		{"nop", _nop},
-		{"rotl", _rotl},
-		{"rotr", _rotr},
-		{"pstr", _pstr},
+	instruction_t funcs[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{"sub", sub},
+		{"div", divi},
+		{"mul", mul},
+		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
 		{"stack", _stack},
 		{"queue", _queue},
-		{NULL, NULL},
+		{NULL, NULL}
 	};
+	int i = 0;
 
-	i = 0;
-	while (instruct[i].f != NULL && strcmp(instruct[i].opcode, str) != 0)
+	while (funcs[i].opcode)
 	{
+		if (strcmp(cmd->op, funcs[i].opcode) == 0)
+		{
+			funcs[i].f(cmd);
+			return;
+		}
 		i++;
 	}
 
-	return (instruct[i].f);
+	printf("L%d: unknown instruction %s\n", cmd->line_number, cmd->op);
+	error_fun(command);
 }
-//stack_t *add_node( **head, const int n)
-//{
-//}
+stack_t *add_node(int **head, const int n)
+{
+printf("soy addnode");
+}
+
+void push(command_t *command)
+{
+    printf("soy push");
+}
+void pall(command_t *command)
+{
+    printf("soy pall");
+}
+void pint(command_t *command)
+{
+    printf("soy pint");
+}
+void pop(command_t *command)
+{
+    printf("soy pop");
+}
+void swap(command_t *command)
+{
+    printf("soy swap");
+}
+
+void add(command_t *command)
+{
+    printf("soy add");
+}
+void nop(command_t *command)
+{
+    printf("soy nop");
+}
+void sub(command_t *command)
+{
+    printf("soy sub");
+}
+void divi(command_t *command)
+{
+    printf("soy div");
+}
+void mul(command_t *command)
+{
+    printf("soy mul");
+}
+void mod(command_t *command)
+{
+    printf("soy mod");
+}
+void pchar(command_t *command)
+{
+    printf("soy pchar");
+}
+void pstr(command_t *command)
+{
+    printf("soy pstr");
+}
+void rotr(command_t *command)
+{
+    printf("soy rotr");
+}
+void _stack(command_t *command)
+{
+    printf("soy stack");
+}
+void _queue(command_t *command)
+{
+    printf("soy queue");
+}

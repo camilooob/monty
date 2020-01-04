@@ -63,4 +63,22 @@ void error_fun(stack_t **headstack);
 void free_list(stack_t *head);
 void get_func(command_t *command);
 void openfile(char *file, stack_t **headstack);
+
+void push(command_t *command);
+void pall(command_t *command);
+void pint(command_t *command);
+void pop(command_t *command);
+void swap(command_t *command);
+void add(command_t *command);
+void nop(command_t *command);
+void sub(command_t *command);
+void mul(command_t *command);
+void mod(command_t *command);
+void pchar(command_t *command);
+void pstr(command_t *command);
+void rotr(command_t *command);
+void _stack(command_t *command);
+void _queue(command_t *command);
+void divi(command_t *command);
+
 #endif
