@@ -40,26 +40,28 @@ void openfile(char *namefile, stack_t **headstack)
 	else
 	{
 		int letter;
-		char words[1024];
-		char count
-		int i;
+        char str[1024];
+        int i = 0;
 		while ((letter = fgetc(file)) != EOF)
 		{
-	//		while (letter != 32)
-	//		{
-				for (i = 0; letter != 104; i++)
-				{
-  					words[i]=letter;
+            str[i] = letter;
+            i++;
+        }
+ //       char str[] = "prueba1 prueba2 prueba3 prueba4 prueba5";
+    int init_size = strlen(str);
+	char delim[] = "\n";
 
-//  			words[i]= '\0';
-//			printf("%s", words);
-				}
-//			}
-			words[i] = '\0';
-			printf("%s", words);
-			fclose(file);
-		}
+	char *ptr = strtok(str, delim);
+
+	while(ptr != NULL)
+	{
+		printf("'%s'\n", ptr);
+		ptr = strtok(NULL, delim);
 	}
+        fclose(file);
+    }
+	    
+	
 }
 
 
