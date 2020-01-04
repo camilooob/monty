@@ -47,17 +47,15 @@ void openfile(char *namefile, stack_t **headstack)
             str[i] = letter;
             i++;
         }
- //       char str[] = "prueba1 prueba2 prueba3 prueba4 prueba5";
-    int init_size = strlen(str);
-	char delim[] = "\n";
+        int init_size = strlen(str);
+	    char delim[] = "\n" " ";
+        char *ptr = strtok(str, delim);
 
-	char *ptr = strtok(str, delim);
-
-	while(ptr != NULL)
-	{
+	    while(ptr != NULL)
+	    {
 		printf("'%s'\n", ptr);
 		ptr = strtok(NULL, delim);
-	}
+	    }
         fclose(file);
     }
 	    
