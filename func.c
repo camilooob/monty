@@ -1,4 +1,5 @@
 #include "monty.h"
+global_t global;
 /**
  * * error_fun - exit and free stack
  * @headstack: head stack pointer
@@ -29,8 +30,16 @@ void free_list(stack_t *head)
 
 void openfile(char *namefile, stack_t **headstack)
 {
+    char *buff = NULL;
 	FILE *file = fopen(namefile, "r");
-
+    size_t buff_long = 0;
+    ssize_t line_long;
+    int init_size = 0;
+    char delim[] = " \t\r\n";
+    char str[1024];
+    char *ptr = strtok(str, delim);
+    int letter;
+    int i = 0;
 
 	if (file == 0)
 	{
@@ -39,28 +48,30 @@ void openfile(char *namefile, stack_t **headstack)
 	}
 	else
 	{
-		int letter;
-        char str[1024];
-        int i = 0;
+        global.file = file;
+        global_var();
+        line_long = getline(&buff,&buff_long, global.file);
 		while ((letter = fgetc(file)) != EOF)
 		{
             str[i] = letter;
             i++;
         }
-        int init_size = strlen(str);
-	    char delim[] = " \t\r\n";
-        char *ptr = strtok(str, delim);
-
+        init_size = strlen(str);
 	    while(ptr != NULL)
 	    {
+        global.line_number += 1;    
+        printf("antes ptr\n");
 		printf("%s\n", ptr);
-		ptr = strtok(NULL, delim);
+        line_long = getline(&buff, &buff_long, global.file);
+		ptr = strtok(buff, delim);
+        get_func(ptr);
+        ptr = NULL;
 	    }
         fclose(file);
     }
 }
 
-void (*get_func(char *s))(stack_t, unsigned int)
+int get_func(char *opcode)
 {
 	instruction_t fun[] = {
 		{"push", _push},
@@ -82,20 +93,20 @@ void (*get_func(char *s))(stack_t, unsigned int)
 		{"queue", _queue},
 		{NULL, NULL}
 
-	};
+    };
 
 int i; 
 i = 0;
-while (i < 17)
+for (i = 0; fun[i].opcode && opcode; i++)
 {
-    if((strcmp(fun[i].opcode, ptr) == 0)
+    if((strcmp(fun[i].opcode, opcode) == 0))
     {
-        fun[i].f(headstack, line_number);
-        return;
+      fun[i].f(&global.headstack, global.line_number);
+      return (0);
     }
-    i++;
 }
 }
+
 
 stack_t *add_node(int **head, const int n)
 {

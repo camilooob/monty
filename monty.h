@@ -41,11 +41,20 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef struct global_s
+{
+stack_t *headstack;
+unsigned int line_number;
+FILE *file;
+} global_t;
+
+extern global_t global;
+
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 int main(int argc, char **argv);
 void error_fun(stack_t **headstack);
 void free_list(stack_t *head);
-void (*get_func(char *s))(stack_t **stack, unsigned int line_number);
+int get_func(char *opcode);
 void openfile(char *file, stack_t **headstack);
 void _pall(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
@@ -64,4 +73,5 @@ void _rotl(stack_t **stack, unsigned int line_number);
 void _rotr(stack_t **stack, unsigned int line_number);
 void _queue(stack_t **stack, unsigned int line_number);
 void _stack(stack_t **stack, unsigned int line_number);
+void global_var(void);
 #endif

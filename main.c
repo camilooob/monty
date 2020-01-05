@@ -1,5 +1,12 @@
 #include "monty.h"
-int sq_flag = 0;
+global_t global;
+
+void global_var(void)
+{
+    global.headstack = NULL;
+    global.line_number = 0;
+}
+
 /**
  * main - handle function for monty languege
  * @argc: num of inputs int
@@ -8,6 +15,7 @@ int sq_flag = 0;
  */
 int main(int argc, char **argv)
 {
+ 
     stack_t *headstack;
     unsigned int line_number;
     void (*f)(stack_t, unsigned int);
@@ -19,10 +27,11 @@ int main(int argc, char **argv)
         printf("USAGE: monty file\n");
         error_fun(&headstack);
     }
+    global_var();
+        
     openfile(argv[1], &headstack);
-    f = get_func(argv[0]);
 
-    printf("%d\n", f(headstack, line_number));
+
 
     return (0);
 }
