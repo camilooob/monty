@@ -40,45 +40,28 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-/**
- * struct command_s - command struct
- * @op: name of operation
- * @arg: argument function
- * @mode: stack or queue
- * @line_number: number of line being
- * @head: head of linked list
- * @tail: tail of linked list
- */
-typedef struct command_s
-{
-    char *op;
-	int arg;
-	int *mode;
-	unsigned int line_number;
-	stack_t **head;
-	stack_t **tail;	
-} command_t;
+
+typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 int main(int argc, char **argv);
 void error_fun(stack_t **headstack);
 void free_list(stack_t *head);
-void get_func(command_t *command);
+void get_func(stack_t **stack, unsigned int line_number);
 void openfile(char *file, stack_t **headstack);
-void _push(command_t *command);
-void _pall(command_t *command);
-void _pint(command_t *command);
-void _pop(command_t *command);
-void _swap(command_t *command);
-void _add(command_t *command);
-void _nop(command_t *command);
-void _sub(command_t *command);
-void _mul(command_t *command);
-void _mod(command_t *command);
-void _pchar(command_t *command);
-void _pstr(command_t *command);
-void _stack(command_t *command);
-void _rotr(command_t *command);
-void _rotl(command_t *command);
-void _queue(command_t *command);
-void _divi(command_t *command);
-
+void _pall(stack_t **stack, unsigned int line_number);
+void _swap(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
+void _pchar(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
+void _push(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void _sub(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _pstr(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
+void _rotl(stack_t **stack, unsigned int line_number);
+void _rotr(stack_t **stack, unsigned int line_number);
+void _queue(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
 #endif

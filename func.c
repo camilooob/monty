@@ -53,15 +53,14 @@ void openfile(char *namefile, stack_t **headstack)
 
 	    while(ptr != NULL)
 	    {
-		printf("'%s'\n", ptr);
+		printf("%s\n", ptr);
 		ptr = strtok(NULL, delim);
 	    }
         fclose(file);
     }
-	    
-	
 }
-void get_func(command_t *command)
+
+void get_func(stack_t **stack, unsigned int line_number)
 {
 	instruction_t fun[] = {
 		{"push", _push},
@@ -72,7 +71,7 @@ void get_func(command_t *command)
 		{"add", _add},
 		{"nop", _nop},
 		{"sub", _sub},
-		{"div", _divi},
+//		{"div", _divi},
 		{"mul", _mul},
 		{"mod", _mod},
 		{"pchar", _pchar},
@@ -82,77 +81,80 @@ void get_func(command_t *command)
 		{"stack", _stack},
 		{"queue", _queue},
 		{NULL, NULL}
+
 	};
 }
+
 stack_t *add_node(int **head, const int n)
 {
 printf("soy addnode");
 }
-void _push(command_t *command)
+void _push(stack_t **stack, unsigned int line_number)
 {
     printf("soy push");
 }
-void _pall(command_t *command)
+
+void _pall(stack_t **stack, unsigned int line_number)
 {
     printf("soy pall");
 }
-void _pint(command_t *command)
+void _pint(stack_t **stack, unsigned int line_number)
 {
     printf("soy pint");
 }
-void _pop(command_t *command)
+void _pop(stack_t **stack, unsigned int line_number)
 {
     printf("soy pop");
 }
-void _swap(command_t *command)
+void _swap(stack_t **stack, unsigned int line_number)
 {
     printf("soy swap");
 }
-void _add(command_t *command)
+void _add(stack_t **stack, unsigned int line_number)
 {
     printf("soy add");
 }
-void _nop(command_t *command)
+void _nop(stack_t **stack, unsigned int line_number)
 {
     printf("soy nop");
 }
-void _sub(command_t *command)
+void _sub(stack_t **stack, unsigned int line_number)
 {
     printf("soy sub");
 }
-void _divi(command_t *command)
+void _divi(stack_t **stack, unsigned int line_number)
 {
     printf("soy div");
 }
-void _mul(command_t *command)
+void _mul(stack_t **stack, unsigned int line_number)
 {
     printf("soy mul");
 }
-void _mod(command_t *command)
+void _mod(stack_t **stack, unsigned int line_number)
 {
     printf("soy mod");
 }
-void _pchar(command_t *command)
+void _pchar(stack_t **stack, unsigned int line_number)
 {
     printf("soy pchar");
 }
-void _pstr(command_t *command)
+void _pstr(stack_t **stack, unsigned int line_number)
 {
     printf("soy pstr");
 }
-void _rotl(command_t *command)
+void _rotl(stack_t **stack, unsigned int line_number)
 {
     printf("soy rotl");
 }
-void _rotr(command_t *command)
+void _rotr(stack_t **stack, unsigned int line_number)
 {
     printf("soy rotr");
 }
-void _stack(command_t *command)
+void _stack(stack_t **stack, unsigned int line_number)
 {
     printf("soy stack");
 }
-void _queue(command_t *command)
+void _queue(stack_t **stack, unsigned int line_number)
 {
     printf("soy queue");
 }
