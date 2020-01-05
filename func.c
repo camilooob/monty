@@ -60,7 +60,7 @@ void openfile(char *namefile, stack_t **headstack)
     }
 }
 
-void get_func(stack_t **stack, unsigned int line_number)
+void (*get_func(char *s))(stack_t, unsigned int)
 {
 	instruction_t fun[] = {
 		{"push", _push},
@@ -71,7 +71,7 @@ void get_func(stack_t **stack, unsigned int line_number)
 		{"add", _add},
 		{"nop", _nop},
 		{"sub", _sub},
-//		{"div", _divi},
+		{"div", _divi},
 		{"mul", _mul},
 		{"mod", _mod},
 		{"pchar", _pchar},
@@ -83,6 +83,18 @@ void get_func(stack_t **stack, unsigned int line_number)
 		{NULL, NULL}
 
 	};
+
+int i; 
+i = 0;
+while (i < 17)
+{
+    if((strcmp(fun[i].opcode, ptr) == 0)
+    {
+        fun[i].f(headstack, line_number);
+        return;
+    }
+    i++;
+}
 }
 
 stack_t *add_node(int **head, const int n)
