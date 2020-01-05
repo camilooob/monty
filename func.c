@@ -53,43 +53,18 @@ void openfile(char *namefile, stack_t **headstack)
         global.file = file;
         global_var();
         line_long = getline(&buff,&buff_long, global.file);
-/**
-	while ((letter = fgetc(file)) != EOF)
-	{
-            str[i] = letter;
-            i++;
-        }
-        init_size = strlen(str);
-	while(line_long >= 0)
-	{
-//		global.line_number++;
-		line_count++;
-        	printf("antes ptr\n");
-		printf("%s\n", ptr);
-        	line_long = getline(&buff, &buff_long, global.file);
-		ptr = strtok(buff, delim);
-        	get_func(ptr);
-        	ptr = NULL;
-	}
-        fclose(file);
-    }
-}
-*/
+
   while (line_size >= 0)
   {
-    /* Increment our line count */
-    line_count++;
 
-    /* Show the line details */
-  //  printf("%s", buff);
+    line_count++;
 	ptr = strtok(buff, delim);
  	get_func(ptr);
-    /* Get the next line */
+
     line_size = getline(&buff, &buff_long, global.file);
   }
   free(buff);
-  buff = NULL; 
- // line_buf = NULL;
+  buff = NULL;
   fclose(global.file);
 }
 }
