@@ -35,6 +35,8 @@ void openfile(char *namefile, stack_t **headstack)
     size_t buff_long = 0;
     ssize_t line_long;
     int init_size = 0;
+	int line_count = 0;
+	ssize_t line_size;
     char delim[] = " \t\r\n";
     char str[1024];
     char *ptr = strtok(str, delim);
@@ -51,26 +53,46 @@ void openfile(char *namefile, stack_t **headstack)
         global.file = file;
         global_var();
         line_long = getline(&buff,&buff_long, global.file);
-		while ((letter = fgetc(file)) != EOF)
-		{
+/**
+	while ((letter = fgetc(file)) != EOF)
+	{
             str[i] = letter;
             i++;
         }
         init_size = strlen(str);
-	    while(ptr != NULL)
-	    {
-        global.line_number += 1;    
-        printf("antes ptr\n");
+	while(line_long >= 0)
+	{
+//		global.line_number++;
+		line_count++;
+        	printf("antes ptr\n");
 		printf("%s\n", ptr);
-        line_long = getline(&buff, &buff_long, global.file);
+        	line_long = getline(&buff, &buff_long, global.file);
 		ptr = strtok(buff, delim);
-        get_func(ptr);
-        ptr = NULL;
-	    }
+        	get_func(ptr);
+        	ptr = NULL;
+	}
         fclose(file);
     }
 }
+*/
+  while (line_size >= 0)
+  {
+    /* Increment our line count */
+    line_count++;
 
+    /* Show the line details */
+  //  printf("%s", buff);
+	ptr = strtok(buff, delim);
+ 	get_func(ptr);
+    /* Get the next line */
+    line_size = getline(&buff, &buff_long, global.file);
+  }
+  free(buff);
+  buff = NULL; 
+ // line_buf = NULL;
+  fclose(global.file);
+}
+}
 int get_func(char *opcode)
 {
 	instruction_t fun[] = {
@@ -114,12 +136,12 @@ printf("soy addnode");
 }
 void _push(stack_t **stack, unsigned int line_number)
 {
-    printf("soy push");
+    printf("soy push\n");
 }
 
 void _pall(stack_t **stack, unsigned int line_number)
 {
-    printf("soy pall");
+    printf("soy pall\n");
 }
 void _pint(stack_t **stack, unsigned int line_number)
 {
