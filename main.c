@@ -11,6 +11,7 @@ void global_var(void)
 	global.num = NULL;
 	global.headstack = NULL;
 	global.line_number = 0;
+	global.gbuff = NULL;
 
 }
 

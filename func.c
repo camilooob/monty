@@ -97,6 +97,7 @@ void openfile(char *namefile, stack_t **headstack)
 	if (file == 0)
 	{
 		printf("Can't open file %s\n", namefile);
+		exit(EXIT_FAILURE);
 		error_fun(headstack);
 	}
 	else
