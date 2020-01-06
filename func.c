@@ -87,13 +87,13 @@ void openfile(char *namefile, stack_t **headstack)
 	char *buff = NULL, *hold = NULL;
 	FILE *file = fopen(namefile, "r");
 	size_t buff_long = 0;
-    ssize_t line_long;
+	ssize_t line_long;
 	int line_count = 0;
 	ssize_t line_size;
 	char delim[] = " \t\r\n";
 	char str[1024];
 	char *ptr = strtok(str, delim);
-
+	(void)line_long;
 	if (file == 0)
 	{
 		printf("Can't open file %s\n", namefile);
@@ -108,7 +108,7 @@ void openfile(char *namefile, stack_t **headstack)
 		{
 			line_count++;
 			hold = malloc(sizeof(*buff));
-			memcpy(hold, buff, sizeof(buff));
+			memcpy(hold, buff, (sizeof(buff)));
 			ptr = strtok(buff, delim);
 			reverseString(hold);
 			global.num = strtok(hold, delim);
@@ -146,6 +146,7 @@ int get_func(char *opcode)
 			return (0);
 		}
 	}
+	return (0);
 }
 
 /**

@@ -24,8 +24,6 @@ int main(int argc, char **argv)
 {
 
 	stack_t *headstack;
-	unsigned int line_number;
-	void (*f)(stack_t, unsigned int);
 	char reversed[10] = "push 1";
 
 	headstack = NULL;
