@@ -5,3 +5,4 @@
 # Task
 
 1) PUSH
+2) PINT
