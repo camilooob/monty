@@ -132,7 +132,7 @@ int _isnumber(char *s)
 	int i;
 
 	if (!s)
-		return (0);
+		return (1);
 
 	if (*s == '-')
 		s++;

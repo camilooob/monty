@@ -1,5 +1,4 @@
 #include "monty.h"
-global_t global;
 /**
  * exit_op - performs exit operations (free/close)
  * Return: No Return

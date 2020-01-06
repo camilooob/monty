@@ -1,6 +1,4 @@
 #include "monty.h"
-global_t global;
-
 /**
  * get_func - opcode
  * @op: output
@@ -12,6 +10,13 @@ void get_func(char *op)
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
+		{"pop", _pop},
+		{"swap", _swap},
+		{"add", _add},
+		{"nop", _nop},
+		{"sub", _sub},
+		{"div", _div},
+		{"mul", _mul},
 		{NULL, NULL}
 
 	};
