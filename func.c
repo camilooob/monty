@@ -1,5 +1,36 @@
 #include "monty.h"
 global_t global;
+void reverseString(char* str) 
+{ 
+    int l, i; 
+    char *begin_ptr, *end_ptr, ch; 
+  
+    // Get the length of the string 
+    l = strlen(str); 
+  
+    // Set the begin_ptr and end_ptr 
+    // initially to start of string 
+    begin_ptr = str; 
+    end_ptr = str; 
+  
+    // Move the end_ptr to the last character 
+    for (i = 0; i < l - 1; i++) 
+        end_ptr++; 
+  
+    // Swap the char from start and end 
+    // index using begin_ptr and end_ptr 
+    for (i = 0; i < l / 2; i++) { 
+  
+        // swap character 
+        ch = *end_ptr; 
+        *end_ptr = *begin_ptr; 
+        *begin_ptr = ch; 
+  
+        // update pointers positions 
+        begin_ptr++; 
+        end_ptr--; 
+    } 
+} 
 /**
  * * error_fun - exit and free stack
  * @headstack: head stack pointer
@@ -30,11 +61,12 @@ void free_list(stack_t *head)
 
 void openfile(char *namefile, stack_t **headstack)
 {
-    char *buff = NULL;
+    char *buff = NULL, *hold = NULL, *reversed = NULL, *num_cutted = NULL;
 	FILE *file = fopen(namefile, "r");
     size_t buff_long = 0;
     ssize_t line_long;
     int init_size = 0;
+	void (*ffok)(unsigned int, unsigned int);
 	int line_count = 0;
 	ssize_t line_size;
     char delim[] = " \t\r\n";
@@ -58,9 +90,15 @@ void openfile(char *namefile, stack_t **headstack)
   {
 
     line_count++;
+	hold = buff;
 	ptr = strtok(buff, delim);
+//	reversed = strrev(hold);
+//	num_cutted = strtok(reversed, delim);
  	get_func(ptr);
+//	printf("%d\n", num_cutted);
+	reverseString(str);
 
+	printf("%s", str);
     line_size = getline(&buff, &buff_long, global.file);
   }
   free(buff);
@@ -112,11 +150,13 @@ printf("soy addnode");
 void _push(stack_t **stack, unsigned int line_number)
 {
     printf("soy push\n");
+    printf("soy num: %u\n",line_number);
 }
 
 void _pall(stack_t **stack, unsigned int line_number)
 {
     printf("soy pall\n");
+	printf("soy num: %u\n",line_number);
 }
 void _pint(stack_t **stack, unsigned int line_number)
 {
