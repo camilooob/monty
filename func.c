@@ -84,19 +84,14 @@ void free_list(stack_t *head)
  */
 void openfile(char *namefile, stack_t **headstack)
 {
-	char *buff = NULL, *hold = NULL, *reversed = NULL, *num_cutted = NULL;
+	char *buff = NULL, *hold = NULL;
 	FILE *file = fopen(namefile, "r");
 	size_t buff_long = 0;
-	ssize_t line_long;
-	int init_size = 0;
-	void (*ffok)(unsigned int, unsigned int);
 	int line_count = 0;
 	ssize_t line_size;
 	char delim[] = " \t\r\n";
 	char str[1024];
 	char *ptr = strtok(str, delim);
-	int letter;
-	int i = 0;
 
 	if (file == 0)
 	{
@@ -210,9 +205,9 @@ void _pall(stack_t **stack, unsigned int line_number)
  * @line_number: num
  * Return: Nothing.
  */
-void _pint(stack_t **stack, unsigned int line_number)
+void _pint(stack_t __attribute__((__unused__)) **stack, unsigned int __attribute__((__unused__)) line_number)
 {
-	printf("soy pint");
+	
 }
 
 /**
