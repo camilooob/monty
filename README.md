@@ -2,7 +2,7 @@
 
 ## Colaboratos: Camilo Baquero - Gabriel Montaño
 
-# Task
+# Mandatory task
 
 0) PUSH
 1) PINT
