@@ -87,6 +87,7 @@ void openfile(char *namefile, stack_t **headstack)
 	char *buff = NULL, *hold = NULL;
 	FILE *file = fopen(namefile, "r");
 	size_t buff_long = 0;
+    ssize_t line_long;
 	int line_count = 0;
 	ssize_t line_size;
 	char delim[] = " \t\r\n";
@@ -130,20 +131,6 @@ int get_func(char *opcode)
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
-		{"pop", _pop},
-		{"swap", _swap},
-		{"add", _add},
-		{"nop", _nop},
-		{"sub", _sub},
-		{"div", _divi},
-		{"mul", _mul},
-		{"mod", _mod},
-		{"pchar", _pchar},
-		{"pstr", _pstr},
-		{"rotl", _rotl},
-		{"rotr", _rotr},
-		{"stack", _stack},
-		{"queue", _queue},
 		{NULL, NULL}
 
 	};
@@ -208,148 +195,4 @@ void _pall(stack_t **stack, unsigned int line_number)
 void _pint(stack_t __attribute__((__unused__)) **stack, unsigned int __attribute__((__unused__)) line_number)
 {
 	
-}
-
-/**
- * _pop - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _pop(stack_t **stack, unsigned int line_number)
-{
-	printf("soy pop");
-}
-/**
- * _swap - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _swap(stack_t **stack, unsigned int line_number)
-{
-	printf("soy swap");
-}
-/**
- * _add - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _add(stack_t **stack, unsigned int line_number)
-{
-	printf("soy add");
-}
-/**
- * _nop - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _nop(stack_t **stack, unsigned int line_number)
-{
-	printf("soy nop");
-}
-
-/**
- * _sub - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _sub(stack_t **stack, unsigned int line_number)
-{
-	printf("soy sub");
-}
-/**
- * _divi - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _divi(stack_t **stack, unsigned int line_number)
-{
-	printf("soy div");
-}
-/**
- * _mul - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _mul(stack_t **stack, unsigned int line_number)
-{
-	printf("soy mul");
-}
-/**
- * _mod - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _mod(stack_t **stack, unsigned int line_number)
-{
-	printf("soy mod");
-}
-/**
- * _pchar - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _pchar(stack_t **stack, unsigned int line_number)
-{
-	printf("soy pchar");
-}
-/**
- * _pstr - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _pstr(stack_t **stack, unsigned int line_number)
-{
-	printf("soy pstr");
-}
-/**
- * _rotl - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _rotl(stack_t **stack, unsigned int line_number)
-{
-	printf("soy rotl");
-}
-
-/**
- * _rotr - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _rotr(stack_t **stack, unsigned int line_number)
-{
-	printf("soy rotr");
-}
-/**
- * _stack - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _stack(stack_t **stack, unsigned int line_number)
-{
-	printf("soy stack");
-}
-
-/**
- * _queue - read fun
- * @stack: output
- * @line_number: num
- * Return: Nothing.
- */
-void _queue(stack_t **stack, unsigned int line_number)
-{
-	printf("soy queue");
 }
