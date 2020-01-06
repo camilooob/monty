@@ -26,6 +26,6 @@ void get_func(char *op)
 			return;
 		}
 	}
-	fprintf(stderr, "Unknown instruction\n");
+	fprintf(stderr, "L%d: unknown instruction %s\n", global.line_number, op);
 	exit(EXIT_FAILURE);
 }

@@ -129,14 +129,16 @@ void free_stack_t(stack_t **head)
  */
 int _isnumber(char *s)
 {
+	int i;
+
 	if (!s)
 		return (0);
 
 	if (*s == '-')
 		s++;
 
-	for (; *s; s++)
-		if (!isdigit(*s))
-			return (0);
-	return (1);
+	for (i = 0; s[i]; i++)
+		if (s[i] < 48 || s[i] > 57)
+			return (1);
+	return (0);
 }

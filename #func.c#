@@ -35,9 +35,9 @@ void free_list(stack_t *head)
 void openfile(char *namefile)
 {
 	char *buff = NULL;
-	char *ptr = NULL;
+	char *ptr;
 	unsigned int line_number = 0;
-	size_t buff_long;
+	size_t buff_long = 0;
 	FILE *file = fopen(namefile, "r");
 
 	if (!file)
@@ -57,7 +57,7 @@ void openfile(char *namefile)
 			get_func(ptr);
 		}
 		free(buff);
-		fclose(file);
+		fclose(global.file);
 		exit(EXIT_SUCCESS);
 	}
 }

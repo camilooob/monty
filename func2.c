@@ -11,7 +11,7 @@ void _push(stack_t **stack, unsigned int line_number)
 {
 	int n;
 
-	if (!_isnumber(global.num) || !global.num)
+	if ((_isnumber(global.num)) == 1)
 	{
 		dprintf(2, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
