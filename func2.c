@@ -50,7 +50,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 
 	if (!stack || !(*stack))
 	{
-		dprintf(2, "L%d: can't pint, stack empty\n", line_number);
+		dprintf(2, "L%d: can't pint, stack empty\n", global.linecount);
 		exit_op();
 		exit(EXIT_FAILURE);
 	}

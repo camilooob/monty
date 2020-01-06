@@ -57,6 +57,7 @@ typedef struct global_s
 	char *gbuff;
 	stack_t *headstack;
 	unsigned int line_number;
+    unsigned int linecount;
 	FILE *file;
 } global_t;
 

@@ -37,7 +37,7 @@ void openfile(char *namefile, stack_t **headstack)
 {
 	char *buff = NULL;
 	char *ptr;
-	int line_count = 0;
+	int line_count = 1;
 	size_t buff_long = 0;
 	ssize_t line_long;
 	ssize_t line_size;
@@ -58,6 +58,7 @@ void openfile(char *namefile, stack_t **headstack)
 	else
 	{
 		global.file = file;
+        global.linecount = line_count;
 		global_var();
 		line_long = getline(&buff, &buff_long, global.file);
 		while (line_size >= 0)
