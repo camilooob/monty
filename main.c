@@ -1,11 +1,16 @@
 #include "monty.h"
 global_t global;
 
+/**
+ * global_var - handle function for monty languege
+ * @void: num of inputs int
+ * Return: None
+ */
 void global_var(void)
 {
 	global.num = NULL;
-    global.headstack = NULL;
-    global.line_number = 0;
+	global.headstack = NULL;
+	global.line_number = 0;
 
 }
 
@@ -17,26 +22,26 @@ void global_var(void)
  */
 int main(int argc, char **argv)
 {
- 
-    stack_t *headstack;
-    unsigned int line_number;
-    void (*f)(stack_t, unsigned int);
+
+	stack_t *headstack;
+	unsigned int line_number;
+	void (*f)(stack_t, unsigned int);
 	char reversed[10] = "push 1";
-    headstack = NULL;
 
-    if (argc != 2)
-    {
-        printf("USAGE: monty file\n");
-        error_fun(&headstack);
-    }
-    global_var();
-        
-    openfile(argv[1], &headstack);
+	headstack = NULL;
+
+	if (argc != 2)
+	{
+		printf("USAGE: monty file\n");
+		error_fun(&headstack);
+	}
+	global_var();
+
+	openfile(argv[1], &headstack);
 	reverseString(reversed);
-//	printf("%s", reversed);
 
 
-    return (0);
+	return (0);
 }
 
 

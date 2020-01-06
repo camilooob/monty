@@ -23,9 +23,9 @@ extern int sq_flag;
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 /**
  * struct instruction_s - opcode and its function
@@ -37,16 +37,25 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct global_s - opcode and its function
+ * @num: the opcode
+ * @headstack: function to handle the opcode
+ * @line_number: ech line.
+ * @file: file.
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
 typedef struct global_s
 {
-char *num;
-stack_t *headstack;
-unsigned int line_number;
-FILE *file;
+	char *num;
+	stack_t *headstack;
+	unsigned int line_number;
+	FILE *file;
 } global_t;
 
 extern global_t global;
@@ -75,6 +84,11 @@ void _rotr(stack_t **stack, unsigned int line_number);
 void _queue(stack_t **stack, unsigned int line_number);
 void _stack(stack_t **stack, unsigned int line_number);
 void global_var(void);
-void reverseString(char* str);
+void reverseString(char *str);
 char *_memcpy(char *dest, char *src, unsigned int n);
+stack_t *add_dnodeint(stack_t **head, const int n);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+int delete_node_index(stack_t **head, unsigned int index);
+void free_stack_t(stack_t *head);
+int _isnumber(char *s);
 #endif
