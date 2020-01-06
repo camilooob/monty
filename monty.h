@@ -1,5 +1,5 @@
-#ifndef MORTY
-#define MORTY
+#ifndef MONTY
+#define MONTY
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,6 +43,7 @@ typedef struct instruction_s
 
 typedef struct global_s
 {
+char *num;
 stack_t *headstack;
 unsigned int line_number;
 FILE *file;
@@ -74,4 +75,6 @@ void _rotr(stack_t **stack, unsigned int line_number);
 void _queue(stack_t **stack, unsigned int line_number);
 void _stack(stack_t **stack, unsigned int line_number);
 void global_var(void);
+void reverseString(char* str);
+char *_memcpy(char *dest, char *src, unsigned int n);
 #endif

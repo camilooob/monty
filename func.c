@@ -1,5 +1,23 @@
 #include "monty.h"
 global_t global;
+/**
+ * _memcpy - prints buffer in hexa
+ * @dest: output
+ * @src: source
+ * @n: integer
+ * Return: Nothing.
+ */
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+unsigned int i;
+i = 0;
+	while (i < n)
+{
+	dest[i] = src[i];
+	i++;
+}
+return (dest);
+}
 void reverseString(char* str) 
 { 
     int l, i; 
@@ -90,15 +108,17 @@ void openfile(char *namefile, stack_t **headstack)
   {
 
     line_count++;
-	hold = buff;
-	ptr = strtok(buff, delim);
-//	reversed = strrev(hold);
-//	num_cutted = strtok(reversed, delim);
- 	get_func(ptr);
-//	printf("%d\n", num_cutted);
-	reverseString(str);
+//	hold = buff;
+	hold = malloc(sizeof *buff);
 
-	printf("%s", str);
+  	memcpy(hold, buff, sizeof(buff)); 
+//	hold = buff;
+	ptr = strtok(buff, delim);
+	reverseString(hold);
+	global.num = strtok(hold, delim);
+ 	get_func(ptr);
+
+//	printf("%s", str);
     line_size = getline(&buff, &buff_long, global.file);
   }
   free(buff);
@@ -149,14 +169,13 @@ printf("soy addnode");
 }
 void _push(stack_t **stack, unsigned int line_number)
 {
-    printf("soy push\n");
-    printf("soy num: %u\n",line_number);
+    printf("[#] Function push ");
+    printf("%s\n", global.num);
 }
 
 void _pall(stack_t **stack, unsigned int line_number)
 {
     printf("soy pall\n");
-	printf("soy num: %u\n",line_number);
 }
 void _pint(stack_t **stack, unsigned int line_number)
 {
