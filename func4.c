@@ -23,6 +23,10 @@ void get_func(char *op)
 
 	int i;
 
+	if (op[0] == '#')
+	{
+		return;
+	}
 	for (i = 0; fun[i].opcode; i++)
 	{
 		if ((strcmp(fun[i].opcode, op) == 0))
