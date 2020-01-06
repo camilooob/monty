@@ -4,5 +4,7 @@
 
 # Task
 
-1) PUSH
-2) PINT
+0) PUSH
+1) PINT
+2) POP
+
