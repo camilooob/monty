@@ -9,3 +9,4 @@
 2) POP
 3) SWAP
 4) ADD
+5) NOP
