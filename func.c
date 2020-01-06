@@ -44,6 +44,11 @@ void openfile(char *namefile, stack_t **headstack)
 	FILE *file = fopen(namefile, "r");
 	char delim[] = " \t\r\n";
 	(void)line_long;
+    if (!file)
+	{
+		dprintf(2, "Error: Can't open file %s\n", namefile);
+		exit(EXIT_FAILURE);
+	}
 	if (file == NULL)
 	{
 		printf("Can't open file %s\n", namefile);
