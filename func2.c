@@ -20,7 +20,6 @@ void _push(stack_t **stack, unsigned int line_number)
 	n = atoi(global.num);
 	add_dnodeint(stack, n);
 }
-
 /**
  * _pall - read fun
  * @stack: output

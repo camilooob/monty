@@ -27,5 +27,7 @@ int get_func(char *opcode)
 			return (0);
 		}
 	}
+	fprintf(stderr, "Unknown instruction\n");
+	exit(EXIT_FAILURE);
 	return (0);
 }

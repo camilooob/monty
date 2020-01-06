@@ -1,54 +1,6 @@
 #include "monty.h"
 global_t global;
 /**
- * _memcpy - prints buffer in hexa
- * @dest: output
- * @src: source
- * @n: integer
- * Return: Nothing.
- */
-char *_memcpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int i;
-
-	i = 0;
-
-	while (i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	return (dest);
-}
-/**
- * reverseString - prints buffer in hexa
- * @str: output
- * Return: Nothing.
- */
-void reverseString(char *str)
-{
-	int l, i;
-	char *begin_ptr, *end_ptr, ch;
-
-	l = strlen(str);
-
-	begin_ptr = str;
-	end_ptr = str;
-
-	for (i = 0; i < l - 1; i++)
-		end_ptr++;
-
-	for (i = 0; i < l / 2; i++)
-	{
-		ch = *end_ptr;
-		*end_ptr = *begin_ptr;
-		*begin_ptr = ch;
-
-		begin_ptr++;
-		end_ptr--;
-	}
-}
-/**
  * * error_fun - exit and free stack
  * @headstack: head stack pointer
  *
@@ -75,7 +27,6 @@ void free_list(stack_t *head)
 		head = tmp;
 	}
 }
-
 /**
  * openfile - read fun
  * @namefile: output
@@ -84,17 +35,16 @@ void free_list(stack_t *head)
  */
 void openfile(char *namefile, stack_t **headstack)
 {
-	char *buff = NULL, *hold = NULL;
-	FILE *file = fopen(namefile, "r");
+	char *buff = NULL;
+	char *ptr;
+	int line_count = 0;
 	size_t buff_long = 0;
 	ssize_t line_long;
-	int line_count = 0;
 	ssize_t line_size;
+	FILE *file = fopen(namefile, "r");
 	char delim[] = " \t\r\n";
-	char str[1024];
-	char *ptr = strtok(str, delim);
 	(void)line_long;
-	if (file == 0)
+	if (file == NULL)
 	{
 		printf("Can't open file %s\n", namefile);
 		exit(EXIT_FAILURE);
@@ -108,11 +58,8 @@ void openfile(char *namefile, stack_t **headstack)
 		while (line_size >= 0)
 		{
 			line_count++;
-			hold = malloc(sizeof(*buff));
-			memcpy(hold, buff, (sizeof(buff)));
 			ptr = strtok(buff, delim);
-			reverseString(hold);
-			global.num = strtok(hold, delim);
+			global.num = strtok(NULL, delim);
 			get_func(ptr);
 			line_size = getline(&buff, &buff_long, global.file);
 		}
