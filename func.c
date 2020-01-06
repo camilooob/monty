@@ -1,5 +1,5 @@
 #include "monty.h"
-global_t global;
+
 /**
  * * error_fun - exit and free stack
  * @headstack: head stack pointer
@@ -30,47 +30,35 @@ void free_list(stack_t *head)
 /**
  * openfile - read fun
  * @namefile: output
- * @headstack: num
  * Return: Nothing.
  */
-void openfile(char *namefile, stack_t **headstack)
+void openfile(char *namefile)
 {
 	char *buff = NULL;
 	char *ptr;
-	int line_count = 1;
+	unsigned int line_number = 0;
 	size_t buff_long = 0;
-	ssize_t line_long;
-	ssize_t line_size;
 	FILE *file = fopen(namefile, "r");
-	char delim[] = " \t\r\n";
-	(void)line_long;
-    if (!file)
+
+	if (!file)
 	{
 		dprintf(2, "Error: Can't open file %s\n", namefile);
 		exit(EXIT_FAILURE);
 	}
-	if (file == NULL)
-	{
-		printf("Can't open file %s\n", namefile);
-		exit(EXIT_FAILURE);
-		error_fun(headstack);
-	}
 	else
 	{
 		global.file = file;
-        global.linecount = line_count;
-		global_var();
-		line_long = getline(&buff, &buff_long, global.file);
-		while (line_size >= 0)
+		/* global_var(); */
+		while ((getline(&buff, &buff_long, file)) != -1)
 		{
-			line_count++;
-			ptr = strtok(buff, delim);
-			global.num = strtok(NULL, delim);
+			line_number++;
+			global.line_number = line_number;
+			ptr = strtok(buff, DELIM);
+			global.num = strtok(NULL, DELIM);
 			get_func(ptr);
-			line_size = getline(&buff, &buff_long, global.file);
 		}
 		free(buff);
-		buff = NULL;
 		fclose(global.file);
+		exit(EXIT_SUCCESS);
 	}
 }

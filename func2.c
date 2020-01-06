@@ -11,7 +11,7 @@ void _push(stack_t **stack, unsigned int line_number)
 {
 	int n;
 
-	if (!_isnumber(global.num))
+	if (!_isnumber(global.num) || !global.num)
 	{
 		dprintf(2, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -47,7 +47,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 void _pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-    line_number++;
+
 	if (!stack || !(*stack))
 	{
 		dprintf(2, "L%d: can't pint, stack empty\n", line_number);

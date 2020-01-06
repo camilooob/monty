@@ -3,10 +3,10 @@ global_t global;
 
 /**
  * get_func - opcode
- * @opcode: output
+ * @op: output
  * Return: Nothing.
  */
-int get_func(char *opcode)
+void get_func(char *op)
 {
 	instruction_t fun[] = {
 		{"push", _push},
@@ -18,16 +18,14 @@ int get_func(char *opcode)
 
 	int i;
 
-	i = 0;
-	for (i = 0; fun[i].opcode && opcode; i++)
+	for (i = 0; fun[i].opcode; i++)
 	{
-		if ((strcmp(fun[i].opcode, opcode) == 0))
+		if ((strcmp(fun[i].opcode, op) == 0))
 		{
-			fun[i].f(&global.headstack, global.line_number);
-			return (0);
+			fun[i].f(global.headstack, global.line_number);
+			return;
 		}
 	}
 	fprintf(stderr, "Unknown instruction\n");
 	exit(EXIT_FAILURE);
-	return (0);
 }

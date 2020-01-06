@@ -1,5 +1,6 @@
 #ifndef MONTY
 #define MONTY
+#define DELIM " \t\r\n"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +12,6 @@
 #include <fcntl.h>
 #include <limits.h>
 
-extern int sq_flag;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -55,9 +55,8 @@ typedef struct global_s
 {
 	char *num;
 	char *gbuff;
-	stack_t *headstack;
+	stack_t **headstack;
 	unsigned int line_number;
-    unsigned int linecount;
 	FILE *file;
 } global_t;
 
@@ -67,19 +66,18 @@ typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 int main(int argc, char **argv);
 void error_fun(stack_t **headstack);
 void free_list(stack_t *head);
-int get_func(char *opcode);
-void openfile(char *file, stack_t **headstack);
+void get_func(char *op);
+void openfile(char *namefile);
 void _pall(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pchar(stack_t **stack, unsigned int line_number);
-void global_var(void);
 void _pint(stack_t **stack, unsigned int line_number);
 void _push(stack_t **stack, unsigned int line_number);
 stack_t *add_dnodeint(stack_t **head, const int n);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
 int delete_node_index(stack_t **head, unsigned int index);
-void free_stack_t(stack_t *head);
+void free_stack_t(stack_t **head);
 int _isnumber(char *s);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);

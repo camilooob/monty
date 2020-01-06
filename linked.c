@@ -110,14 +110,14 @@ int delete_node_index(stack_t **head, unsigned int index)
  *
  * Return: No return
  */
-void free_stack_t(stack_t *head)
+void free_stack_t(stack_t **head)
 {
 	stack_t *tmp;
 
 	while (head)
 	{
-		tmp = head;
-		head = head->next;
+		tmp = *head;
+		*head = (*head)->next;
 		free(tmp);
 	}
 }

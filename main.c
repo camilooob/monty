@@ -1,20 +1,20 @@
 #include "monty.h"
 global_t global;
 
-/**
- * global_var - handle function for monty languege
- * @void: num of inputs int
- * Return: None
- */
-void global_var(void)
-{
-	global.num = NULL;
-	global.headstack = NULL;
-	global.line_number = 0;
-    global.linecount = 1;
-	global.gbuff = NULL;
+/* /\** */
+/*  * global_var - handle function for monty languege */
+/*  * @void: num of inputs int */
+/*  * Return: None */
+/*  *\/ */
+/* void global_var(void) */
+/* { */
+/*  global.num = NULL; */
+/*  global.headstack = NULL; */
+/*  global.line_number = 0; */
+/*     global.linecount = 1; */
+/*  global.gbuff = NULL; */
 
-}
+/* } */
 
 /**
  * main - handle function for monty languege
@@ -24,9 +24,9 @@ void global_var(void)
  */
 int main(int argc, char **argv)
 {
-	stack_t *headstack;
+	stack_t *headstack = NULL;
 
-	headstack = NULL;
+	global.headstack = &headstack;
 
 	if (argc != 2)
 	{
@@ -34,9 +34,7 @@ int main(int argc, char **argv)
 		error_fun(&headstack);
 		exit(EXIT_FAILURE);
 	}
-	global_var();
 
-	openfile(argv[1], &headstack);
-
+	openfile(argv[1]);
 	return (0);
 }
