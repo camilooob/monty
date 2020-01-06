@@ -47,10 +47,10 @@ void _pall(stack_t **stack, unsigned int line_number)
 void _pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-    (void)line_number;
+
 	if (!stack || !(*stack))
 	{
-		dprintf(2, "L%d: can't pint, stack empty\n", global.linecount);
+		dprintf(2, "L%d: can't pint, stack empty\n", line_number);
 		exit_op();
 		exit(EXIT_FAILURE);
 	}
