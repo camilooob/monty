@@ -7,4 +7,4 @@
 0) PUSH
 1) PINT
 2) POP
-
+3) SWAP
