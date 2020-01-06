@@ -89,7 +89,7 @@ void _swap(stack_t **stack, unsigned int line_number)
 
 	while (tmp)
 		tmp = tmp->next, count++;
-	if (count < 2)
+	if (count < 2 || !stack || !(*stack) || !(*stack)->next)
 	{
 		dprintf(2, "L%d: can't swap, stack too short\n", line_number);
 		exit_op();
